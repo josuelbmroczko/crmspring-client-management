@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Oportunidade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>:root { --primary-color: #4a90e2; --bg-color: #f4f7fa; --card-bg: #ffffff; --text-color: #333; --border-color: #d1d1d1; --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); } body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 30px; } .container { max-width: 600px; width: 100%; background-color: var(--card-bg); padding: 30px 40px; border-radius: 8px; box-shadow: var(--shadow); } h1 { color: var(--primary-color); text-align: center; margin-bottom: 25px; } .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } .form-grid .full-width { grid-column: 1 / -1; } .form-group { display: flex; flex-direction: column; } .form-group label { margin-bottom: 6px; font-weight: 500; } .form-group input { padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem; font-family: 'Poppins', sans-serif; } .form-group input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); } .form-actions { margin-top: 30px; display: flex; justify-content: flex-end; gap: 15px; } .btn { padding: 12px 25px; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; text-decoration: none; font-weight: 500; transition: all 0.2s; } .btn-primary { background-color: var(--primary-color); color: white; } .btn-primary:hover { background-color: #357ABD; } .btn-secondary { background-color: #f0f0f0; color: #555; border: 1px solid var(--border-color); } .btn-secondary:hover { background-color: #e0e0e0; }</style>
+</head>
+<body>
+<div class="container">
+    <h1>Nova Oportunidade</h1>
+    <form th:action="@{/account/{accountId}/opportunities/save(accountId=${accountId})}" th:object="${opportunity}" method="post">
+        <div class="form-grid">
+
+            <div class="form-group full-width">
+                <label for="name">Nome da Oportunidade</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="stage">Estágio</label>
+                <input type="text" id="stage" th_field="*{stage}">
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Valor (ex: 50000.00)</label>
+                <input type="number" step="0.01" id="amount" th:field="*{amount}" min="0" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="expectedCloseDate">Data de Fechamento</label>
+                <input type="date" id="expectedCloseDate" th:field="*{expectedCloseDate}" required min="2020-01-01" max="2050-12-31">
+            </div>
+
+        </div>
+        <div class="form-actions">
+            <a th:href="@{/account-detail/{id}(id=${accountId})}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar Oportunidade</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

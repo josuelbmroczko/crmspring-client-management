@@ -55,4 +55,92 @@ public class Opportunities {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Accounts_id")
     private Accounts accounts;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getExpectedCloseDate() {
+        return expectedCloseDate;
+    }
+
+    public void setExpectedCloseDate(LocalDate expectedCloseDate) {
+        this.expectedCloseDate = expectedCloseDate;
+    }
+
+    public Double getProbability() {
+        return probability;
+    }
+
+    public void setProbability(Double probability) {
+        this.probability = probability;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Accounts getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Accounts accounts) {
+        this.accounts = accounts;
+    }
 }
